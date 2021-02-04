@@ -1,0 +1,152 @@
+  html, body {
+    height: 100%;
+  }
+  .logInDoc{
+    overflow-x: hidden;
+    height: 100%;
+    display: block;
+    background-repeat: no-repeat;
+    background:radial-gradient(ellipse at center, rgba(255,254,234,1) 0%, rgba(255,254,234,1) 35%, #B7E8EB 100%) !important;
+  }
+  .rounded{
+    border-radius: 16px !important;
+  }
+  .colLg4{
+    padding:8% 4% 0;
+    /* backdrop-filter: blur(20px); */
+  }
+  .colLg4 input{
+    color: #51A4AE;
+    border-width: 0;
+    border-radius: 0;
+    border-color: #51A4AE;
+    border-bottom-width:1px ;
+    background-color: rgba(255,255,255,0);
+  }
+  .colLg4 input::placeholder{
+    color: #51A4AE;
+  }
+  .logInDoc input:focus{
+    outline: none !important;
+    box-shadow: none;
+    background-color: rgba(255,255,255,0);
+    caret-color: #51A4AE;
+    color: #51A4AE;
+    border-bottom-width: 2px;
+  }
+  .logInDoc a:hover{
+    text-decoration: none;
+  }
+  
+  .logInDocBtn{
+    margin:8% auto;
+    padding: 3% 10%;
+    border-radius: 20px;
+    border-color: #51A4AE;
+    background-color:#51A4AE;
+  }
+  .logInDocBtn:hover{
+    background-color: #1b7a85;
+    border-color: #1b7a85;
+  }
+  .row{
+    color: #51A4AE;
+    padding-top: 1.5%;
+  }
+  .dropdown{
+    width: auto;
+  }
+  .colLg8 img{
+    width: 45vw;
+    margin: 0 auto;
+  }
+  .colSm2{
+    padding-top: 10px;
+  }
+  .colSm10{
+    padding-left: 10px;
+  }
+  .colLg8{
+    padding-top: 5%;
+  }
+  .error{
+    margin:1%;
+    display: inline-block;
+    color: red;
+  }
+  form > .row{
+    padding-top: 0;
+  }
+  p.para{
+    color: red;
+  }
+  @media (max-width:1050px){
+    .row{
+      width: 100%;
+    }
+    .logInDoc > .row{
+      padding-bottom: 10%;
+    }
+    .colLg4{
+      padding: 0;
+      padding-top: 6%;
+    }
+    .colLg8{
+      padding: 0;
+      padding-top: 8%;
+    }
+  }
+  @media (max-width:800px){
+    .colSm2{
+      width: 10%;
+    }
+    .row{
+      width: auto;
+    }
+    form>.row{
+      margin-bottom: 5px;
+    }
+    .colSm10{
+      width: 85%;
+      margin: 0 auto;
+    }
+    .shadowLg{
+      box-shadow: none !important;
+    }
+    .colLg8{
+      padding-top: 8%;
+    }
+    .colLg8 img{
+      width: 80vw;
+    }
+    .logInDoc button{
+      margin-bottom: 2%;
+      font-size: 24px;
+    }
+    .logInDocBtn{
+      padding:2% 5%;
+    }
+    .logInDoc form>.row{
+      padding-left: 3%;
+      padding-right: 4%;
+    }
+    .colLg4{
+        width: 80%;
+        margin: 5% auto;
+    }
+  }
+  @media (max-width:600px){
+    .logInDoc form>.row{
+      padding-left: 2%;
+      padding-right: 0;
+    }
+  }
+  @media (max-width:400px){
+    .colSm10{
+      width: 80%;
+      margin: 0 auto;
+    }
+    .logInDoc button{
+      font-size: 18px;
+    }
+  }
