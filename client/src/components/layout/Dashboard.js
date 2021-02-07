@@ -11,6 +11,7 @@ class Dashboard extends Component {
 
 render() {
     const { user } = this.props.auth;
+    console.log(this.props.auth);
     return (
       <div  className="container text-center mt-15">
         <div className="row">
