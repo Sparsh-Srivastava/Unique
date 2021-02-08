@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
+import { Nav,Navbar,NavDropdown } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import UserContext from "../../context/userContext";
+import styles from "../styles/RegisterST.module.css";
 
 function AuthOptions () {
     const { userData, setUserData } = useContext(UserContext);
@@ -17,15 +19,20 @@ function AuthOptions () {
     };
 
     return (
-        <nav className="auth-options">
+        <nav className="auth-options text-center">
+            <Navbar.Collapse id="basic-navbar-nav">
             {userData.user ? (
-                <button className="btn btn-primary mr-2" onClick={logout}>Logout</button>
+                <Nav.Link onClick={logout}><i class="fas fa-sign-out-alt fa-lg"></i></Nav.Link>
             ) : (
                 <>
-                <button className="btn btn-primary mr-2" onClick={register}>Sign Up</button>
-                <button className="btn btn-primary mr-2" onClick={login}>Login</button>
+                <NavDropdown title="Register as" id="nav-dropdown">
+                    <NavDropdown.Item href="/register/teacher">Teacher</NavDropdown.Item>
+                    <NavDropdown.Item href="/register/student">Student</NavDropdown.Item>
+                </NavDropdown>
+                <Nav.Link href="/login" className={styles.a}>Log-In</Nav.Link>
                 </>
             )}
+            </Navbar.Collapse>
         </nav>
     )
 }

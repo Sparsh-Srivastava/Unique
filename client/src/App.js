@@ -3,7 +3,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import Header from './components/layout/Header';
 import Home from './components/pages/Home';
-import Register from './components/auth/Register';
+import RegisterTC from './components/auth/RegisterTC';
+import RegisterST from './components/auth/RegisterST';
 import Login from './components/auth/Login';
 import UserContext from './context/userContext';
 import './App.css';
@@ -42,7 +43,8 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/register" component={Register} />
+          <Route path="/register/student" component={RegisterST} />
+          <Route path="/register/teacher" component={RegisterTC} />
           <Route path="/login" component={Login} />
         </Switch>
         </UserContext.Provider>
