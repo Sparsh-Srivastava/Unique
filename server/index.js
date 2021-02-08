@@ -1,43 +1,34 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const passport = require("passport");
-const path = require("path");
-const cors = require('cors')
+const cors = require("cors");
+require("dotenv").config();
 
-const users = require("./routes/api/users");
+// set up express
 
 const app = express();
+app.use(express.json());
+app.use(cors());
 
-app.use(
-    bodyParser.urlencoded({
-      extended: false
-    })
-  );
+const PORT = process.env.PORT || 5000;
 
-app.use(bodyParser.json());
+app.listen(PORT, () => console.log(`The server has started on port: ${PORT}`));
 
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-  })
+// set up mongoose
+
+mongoose.connect(
+  process.env.MONGODB_CONNECTION_STRING,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  },
+  (err) => {
+    if (err) throw err;
+    console.log("MongoDB connection established");
+  }
 );
 
-const dbURL =  "mongodb://localhost:27017/unique";
+// set up routes
 
-mongoose
-    .connect(process.env.MONGODB_URI || dbURL,
-    { useUnifiedTopology:true, useNewUrlParser: true }
-    )
-    .then(() => console.log("MongoDB successfully connected"))
-    .catch(err => console.log(err));
-
-app.use(passport.initialize());
-
-require("./config/passport")(passport);
-
-app.use("/api/users", users);
-
-const port = process.env.PORT || 5000;
-
-app.listen(port,()=>console.log(`Server up and running on port ${port}`));
+app.use("/users", require("./routes/users"));
+app.use("/todos", require("./routes/todo"));

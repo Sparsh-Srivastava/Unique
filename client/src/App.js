@@ -1,50 +1,52 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import {Provider} from 'react-redux';
-import store from './store';
-import jwt_decode from "jwt-decode";
-import setAuthToken from "./util/setAuthToken";
-import { setCurrentUser, logoutUser } from "./actions/authActions";
-
+import React, {useState, useEffect } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import axios from 'axios';
+import Header from './components/layout/Header';
+import Home from './components/pages/Home';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
+import UserContext from './context/userContext';
 import './App.css';
 
-import Navbar from "./components/layout/Navbar";
-import Landing from "./components/layout/Landing";
-import Register from "./components/layout/Register";
-import Login from "./components/layout/Login";
-import PrivateRoute from "./components/private-route/PrivateRoute";
-import Dashboard from "./components/layout/Dashboard";
-
-
-if (localStorage.jwtToken) {
-
-  const token = localStorage.jwtToken;
-  setAuthToken(token);
-  const decoded = jwt_decode(token);
-  store.dispatch(setCurrentUser(decoded));
-  const currentTime = Date.now() / 1000; 
-  if (decoded.exp < currentTime) {
-    store.dispatch(logoutUser());
-    window.location.href = "./login";
-  }
-}
-
 function App() {
+  const [ userData, setUserData] = useState({
+    token: undefined,
+    user: undefined
+  });
+
+  useEffect(() => {
+    const checkLoggedIn = async () => {
+      let token = localStorage.getItem("auth-token");
+      if(token === null){
+        localStorage.setItem("auth-token", "");
+        token = "";
+      }
+      const tokenResponse = await axios.post('http://localhost:5000/users/tokenIsValid', null, {headers: {"x-auth-token": token}});
+      if (tokenResponse.data) {
+        const userRes = await axios.get("http://localhost:5000/users/", {
+          headers: { "x-auth-token": token },
+        });
+        setUserData({
+          token,
+          user: userRes.data,
+        });
+      }
+    }
+
+    checkLoggedIn();
+  }, []);
+
   return (
-    <Provider store={store} >
-      <Router>
-        <div className="App">
-          <Navbar/>
-          <Route path="/" component = {Landing} exact />
-          <Route path="/register" component={Register} exact/>
-          <Route path="/login" component={Login} exact/>
-          <Switch>
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-          </Switch>
-        </div>
-      </Router>
-    </Provider>
-    
+    <BrowserRouter>
+      <UserContext.Provider value={{ userData, setUserData }}>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+        </Switch>
+        </UserContext.Provider>
+    </BrowserRouter>
   );
 }
 
