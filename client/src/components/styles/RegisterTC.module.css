@@ -1,0 +1,205 @@
+.signupDoc{
+    background:radial-gradient(ellipse at center, rgba(255,254,234,1) 0%, rgba(255,254,234,1) 35%, #78c6eb  100%) !important;
+    overflow-x: hidden;
+    height: 100%;
+  }
+  .col > select{
+    background-color: transparent;
+    width: 97%;
+    border-width: 0;
+    border-bottom: 1px solid #007cb6;
+    color: #007cb6;
+  }
+  .col > select:focus{
+    outline: none !important;
+    box-shadow: none;
+    background-color: transparent;
+  }
+  .signupDoc form{
+    padding:8%;
+  }
+  .rounded{
+    border-radius: 16px !important;
+  }
+  .formCol a{
+    color: #08107e;
+  }
+  .formCol a:hover{
+    color: #474fc4;
+    text-decoration: none;
+  }
+  .signupDoc img{
+    width: 35vw;
+    margin: 0 auto;
+  }
+  .signupDoc {
+    color: #007cb6 !important;  
+  }
+  .row{
+    padding-top: .5%;
+    padding-right: 2%;
+  }
+  .formCol{
+    margin:4% 0;
+    color: #007cb6 ;
+    padding:3% 2% 0;
+    background-color: transparent;
+  }
+  .formCol input{
+    width: 100%;
+    color: #007cb6 ;
+    border-width: 0;
+    border-radius: 0;
+    border-color: #007cb6 ;
+    border-bottom-width:1px ;
+    background-color: rgba(255,255,255,0);
+  }
+  .formCol input::placeholder{
+    color: #007cb6 ;
+  }
+  .signupDoc input:focus{
+    outline: none !important;
+    box-shadow: none;
+    background-color: transparent;
+    border-bottom-width:2px ;
+    border-color: #007cb6 ;
+    color: #007cb6 ;
+    caret-color: #007cb6;
+  }
+  .imgCol{
+    padding-top: 8%;
+    text-align: center;
+  }
+  .signInDocBtn{
+    margin:6% auto;
+    padding:2.5% 8%;
+    border-radius: 20px;
+    border-color: #007cb6 ;
+    background-color:#007cb6;
+  }
+  .signInDocBtn:hover{
+    background-color: #00547a;
+    border-color: #00547a;
+  }
+  .col{
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 2.5%;
+  }
+  .prevIcon,
+  .nextIcon {
+    background-size: 100%, 100%;
+    background-image: none;
+  }
+  .nextIcon{
+    position: relative;
+    left: -55%;
+  }
+  .nextIcon:after
+  {
+    content: '⇨';
+    font-size: 55px;
+    color: #007cb6 ;
+  }
+  .prevIcon:after {
+    content: '⇦';
+    font-size: 55px;
+    color: #007cb6 ;
+  }
+  .next,.prev{
+    top:auto;
+    bottom: auto;
+  }
+  .next:hover,.prev:hover{
+    text-decoration: none;
+  }
+  @media (max-width:1050px){
+    .row{
+      width: 100%;
+    }
+    .signupDoc > .row{
+      padding-bottom: 10%;
+    }
+    .formCol{
+      padding: 0;
+      padding-top: 2%;
+      padding-left: 2%;
+      padding-right: 5%;
+    }
+    .imgCol{
+      padding: 0;
+      padding-top: 8%;
+    }
+    .col-sm-10{
+      padding:0;
+    }
+    .imgCol {
+      padding-top: 10%;
+    }
+  }
+  
+  @media (max-width:800px){
+    body{
+      height: auto;
+    }
+    .col > select{
+      width: 98%;
+    }
+    .col-sm-2{
+      width: 10%;
+    }
+    .row{
+      width: auto;
+    }
+    .signupDoc form>.row{
+      margin-bottom: 5px;
+      text-align: center;
+      padding-left: 1%;
+      padding-right: 8%;
+    }
+    .col-sm-10{
+      width: 85%;
+      padding: 0;
+      margin: 0 auto;
+    }
+    .shadow-lg{
+      box-shadow: none !important;
+    }
+    .imgCol{
+      padding-top: 8%;
+    }
+    .imgCol img{
+      width: 80vw;
+      margin: 0 auto;
+    }
+    .signupDocBtn{
+      margin-bottom: 2%;
+      font-size: 22px;
+      padding:2% 5%;
+    }
+    .signupDoc > .row{
+      padding-bottom: 0%;
+    }
+  }
+  @media (max-width:600px){
+    .signupDoc form>.row{
+      padding-left: 8%;
+    }
+    .signupDoc{
+      height: auto;
+    }
+    .formCol{
+      padding: 0;
+      padding-top: 2%;
+      padding-left: 8%;
+      padding-right: 5%;
+    }
+  }
+  @media (max-width:400px){
+    .col-sm-10{
+      width: 80%;
+    }
+    .signInDocbtn{
+      font-size: 18px;
+    }
+  }
